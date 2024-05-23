@@ -15,7 +15,7 @@
 <body>
     
 <div class="container">
-    <h1>Crear Empleados</h1>
+    <h1>Crear Departamentos</h1>
     <form id="employeeForm" action="{{ route('storeEmployee') }}" method="POST">
         @csrf <!-- Agregar esto si estás utilizando Laravel para evitar errores de CSRF -->
         <div class="mb-3">
@@ -23,26 +23,8 @@
             <input type="text" class="form-control" id="name" name="firstName" required>
         </div>
         <div class="mb-3">
-            <label for="lastName" class="form-label">Apellido</label>
+            <label for="lastName" class="form-label">Descripcion</label>
             <input type="text" class="form-control" id="lastName" name="lastName" required>
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Correo electrónico</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="phone" class="form-label">Telefono</label>
-            <input type="text" class="form-control" id="email" name="phone" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="position" class="form-label">Posición</label>
-            <input type="text" class="form-control" id="position" name="position" required>
-        </div>
-        <div class="mb-3">
-            <label for="department" class="form-label">Departamento</label>
-            <input type="text" class="form-control" id="department" name="department" required>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>

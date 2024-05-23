@@ -6,10 +6,7 @@ use App\Http\Controllers\DashboardController ;
 use App\Http\Controllers\EmployeesController ;
 use App\Http\Controllers\CreateEmployeesController ;
 use App\Http\Controllers\DepartmentController ;
-
-
-
-
+use App\Http\Controllers\CreateDepartmentController ;
 
 
 Route::get('/', function () {
@@ -39,6 +36,8 @@ Route::post('/storeEmployee', [CreateEmployeesController::class, 'storeEmployee'
 Route::post('/empleados/{id}', [EmployeesController::class, 'destroy'])->name('employees.destroy');
 
 Route::get('/departamentos', [DepartmentController::class, 'index'])->name('departamentos');
+
+Route::get('/createdepartment', [CreateDepartmentController::class, 'index'])->name('createdepartment');
 
 
 

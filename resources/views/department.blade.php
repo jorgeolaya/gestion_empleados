@@ -29,23 +29,37 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-                <th>Posición</th>
-                <th>Departamento</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
                 <th>Acciones</th>
             </tr>
         </thead>
+        <tbody>
+            <!-- Aquí puedes iterar sobre tus datos de departamentos para mostrar cada uno -->
+            @foreach($departamentos as $departamento)
+                <tr>
+                    <td>{{ $departamento->id }}</td>
+                    <td>{{ $departamento->name }}</td>
+                    <td>{{ $departamento->description }}</td>
+                    <!-- Puedes añadir acciones como editar o eliminar según tus necesidades -->
+                    <td>
+                        <!-- Por ejemplo, un botón para editar -->
+                        <button class="btn btn-primary btn-sm" onclick="editDepartment({{ $departamento->id }})">Editar</button>
+                        <!-- O un botón para eliminar -->
+                        <button class="btn btn-danger btn-sm" onclick="deleteDepartment({{ $departamento->id }})">Eliminar</button>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
     </table>
+    
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <script>
     function openEmployeeWindow() {
-        window.open('{{ route("createemployees") }}', 'Agregar Empleado', 'width=600,height=400');
+        window.open('{{ route("createdepartment") }}', 'Agregar Empleado', 'width=600,height=400');
     }
 
 
