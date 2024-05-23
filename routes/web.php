@@ -33,11 +33,8 @@ Route::post('/empleados', [EmployeesController::class, 'store'])->name('empleado
 Route::get('/createemployees', [CreateEmployeesController::class, 'index'])->name('createemployees');
 Route::post('/storeEmployee', [CreateEmployeesController::class, 'storeEmployee'])->name('storeEmployee');
 
-//Route::delete('/empleados/{id}', [EmployeesController::class, 'destroy'])->name('employees.destroy');
+Route::post('/empleados/{id}', [EmployeesController::class, 'destroy'])->name('employees.destroy');
 
-Route::delete('/empleados/{id}', function ($id) {
-    dd("Solicitud DELETE para eliminar el empleado con ID: $id");
-})->name('employees.destroy');
 
 
 

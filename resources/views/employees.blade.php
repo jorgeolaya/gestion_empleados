@@ -49,7 +49,17 @@
                     <td>{{ $employee->position_id }}</td>
                     <td>{{ $employee->department_id }}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm" onclick="deleteEmployee({{ $employee->id }})">Eliminar</button>
+                    <!--    
+                    <button class="btn btn-danger btn-sm" onclick="deleteEmployee({{ $employee->id }})">Eliminar</button>
+                    -->
+                    <form id="deleteEmployeeForm" action="{{ route('empleados.delete', ['id' => $employee->id]) }}" method="POST">
+
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" id="employeeIdToDelete" name="employeeId">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                                                            
                     </td>
                 </tr>
             @endforeach
@@ -64,43 +74,14 @@
         window.open('{{ route("createemployees") }}', 'Agregar Empleado', 'width=600,height=400');
     }
 
+
     function deleteEmployee(employeeId) {
-
-    /*
-    if (confirm('¿Estás seguro de que deseas eliminar este empleado?')) {
-        axios.delete(`/empleados/${employeeId}`)
-            .then(response => {
-                if (response.data.success) {
-                    // Redirect to the `/empleados` route after deletion
-                    window.location.href = '/empleados';
-                } else {
-                    alert('Error al eliminar el empleado.');
-                }
-            })
-            .catch(error => console.error('Error:', error));
+    // Establecer el valor del campo oculto con el ID del empleado
+    document.getElementById('employeeIdToDelete').value = employeeId;
+    // Enviar el formulario
+    document.getElementById('deleteEmployeeForm').submit();
     }
-    */
 
-    
-
-    if (confirm('¿Estás seguro de que deseas eliminar este empleado?')) {
-        fetch(`/empleados/${employeeId}`, {
-            method: 'DELETE',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                location.reload();
-            } else {
-                alert('Error al eliminar el empleado.');
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }    
-    }
 
 
 </script>
