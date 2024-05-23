@@ -19,9 +19,11 @@
     <div class="dashboard-item">
         <a href="{{ url('/empleados') }}">Empleados</a>
     </div>
+
     <div class="dashboard-item">
-        <a href="/departamentos">Departamentos</a>
+        <a href="{{ url('/departamentos') }}">Departamentos</a>
     </div>
+
     <div class="dashboard-item">
         <a href="/posiciones">Posiciones</a>
     </div>

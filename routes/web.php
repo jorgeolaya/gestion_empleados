@@ -5,6 +5,9 @@ use App\Http\Controllers\AuthenticationController ;
 use App\Http\Controllers\DashboardController ;
 use App\Http\Controllers\EmployeesController ;
 use App\Http\Controllers\CreateEmployeesController ;
+use App\Http\Controllers\DepartmentController ;
+
+
 
 
 
@@ -34,6 +37,10 @@ Route::get('/createemployees', [CreateEmployeesController::class, 'index'])->nam
 Route::post('/storeEmployee', [CreateEmployeesController::class, 'storeEmployee'])->name('storeEmployee');
 
 Route::post('/empleados/{id}', [EmployeesController::class, 'destroy'])->name('employees.destroy');
+
+Route::get('/departamentos', [DepartmentController::class, 'index'])->name('departamentos');
+
+
 
 
 
